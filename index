@@ -1,0 +1,785 @@
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxana Delaunay - Marketing Stratégique & Digital B2B</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #C41212;
+            --secondary: #FFEFF7;
+            --white: #FFFFFF;
+            --dark: #1a1a1a;
+            --text: #333333;
+            --gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navigation moderne avec blur */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(196, 18, 18, 0.08);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 30px rgba(196, 18, 18, 0.15);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+            letter-spacing: 0.3px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 8rem 2rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Hero moderne avec animations */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--white) 50%, var(--gray) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(196, 18, 18, 0.1) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, 50px) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            color: var(--primary);
+            display: inline-block;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), #a00f0f);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 10px 30px rgba(196, 18, 18, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #a00f0f);
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(196, 18, 18, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(196, 18, 18, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Sections avec design moderne */
+        #about {
+            background: var(--white);
+        }
+
+        .about-intro {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(196, 18, 18, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--primary), #a00f0f);
+            transition: height 0.4s ease;
+        }
+
+        .about-card:hover::before {
+            height: 100%;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(196, 18, 18, 0.15);
+        }
+
+        .about-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        #skills {
+            background: var(--gray);
+        }
+
+        .skills-section {
+            margin: 3rem 0;
+        }
+
+        .skills-section h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-item {
+            background: var(--white);
+            padding: 1.2rem 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(196, 18, 18, 0.15);
+        }
+
+        #experience {
+            background: var(--white);
+        }
+
+        .experience-item {
+            background: var(--gray);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border-left: 6px solid var(--primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(196, 18, 18, 0.15);
+        }
+
+        .experience-item h3 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .experience-item h4 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+        }
+
+        .results {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            border: 2px dashed rgba(196, 18, 18, 0.2);
+        }
+
+        .results strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        #vision {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        #vision h2 {
+            color: var(--white);
+        }
+
+        #vision h2::after {
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .vision-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border-left: 6px solid var(--primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .vision-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        #contact {
+            background: var(--secondary);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(196, 18, 18, 0.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(196, 18, 18, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Animations au scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#experience">Expériences</a></li>
+            <li><a href="#vision">Ma vision</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Marketing Stratégique et Digital B2B</span></h1>
+            <p class="subtitle">Oxana Delaunay</p>
+            <p class="tagline">J'aide les entreprises B2B à générer des leads et structurer leur stratégie marketing</p>
+            <div class="badge">🎯 Recherche CDI</div>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">📩 Me contacter</a>
+                <a href="#" class="btn btn-secondary" onclick="alert('Fonctionnalité de téléchargement à configurer')">📄 Télécharger mon CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>À propos</h2>
+            <p class="about-intro">
+                Curieuse et dynamique, je travaille dans le marketing digital et l'événementiel avec un intérêt pour des projets concrets et utiles. Mon objectif ? Progresser, performer et apporter de la valeur à tout ce que j'entreprends.
+            </p>
+            
+            <div class="about-grid">
+                <div class="about-card fade-in">
+                    <h3>💡 Qui je suis</h3>
+                    <p>Passionnée par le marketing B2B, spécialisée dans les secteurs IT, cybersécurité et automatisation. Actuellement en MSC Strategic Marketing à Excelia Business School.</p>
+                </div>
+                
+                <div class="about-card fade-in">
+                    <h3>🎯 Ce que je sais faire</h3>
+                    <p>Élaborer et déployer des stratégies marketing complètes : lead generation, personal branding, contenus, LinkedIn Ads, et automatisation.</p>
+                </div>
+                
+                <div class="about-card fade-in">
+                    <h3>🚀 Ce que je cherche</h3>
+                    <p>Un CDI où allier stratégie et opérationnel, dans un environnement B2B exigeant, où le marketing est business-driven.</p>
+                </div>
+                
+                <div class="about-card fade-in">
+                    <h3>⚡ Comment je travaille</h3>
+                    <p>Structurée, autonome, orientée résultats. À l'aise avec des interlocuteurs dirigeants et capable d'analyser pour optimiser continuellement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Compétences</h2>
+            
+            <div class="skills-section">
+                <h3>💼 Hard Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item fade-in">Stratégie marketing B2B</div>
+                    <div class="skill-item fade-in">Lead generation</div>
+                    <div class="skill-item fade-in">Marketing automation</div>
+                    <div class="skill-item fade-in">LinkedIn Ads / Emailing</div>
+                    <div class="skill-item fade-in">Contenus (livres blancs, landing pages)</div>
+                    <div class="skill-item fade-in">CRM (HubSpot, Lemlist)</div>
+                    <div class="skill-item fade-in">Personal branding</div>
+                    <div class="skill-item fade-in">Branding & identité visuelle</div>
+                    <div class="skill-item fade-in">Réseaux sociaux B2B</div>
+                    <div class="skill-item fade-in">Événementiel</div>
+                    <div class="skill-item fade-in">Adobe Creative Cloud, Canva</div>
+                    <div class="skill-item fade-in">Make, Zapier, Claude, Gemini</div>
+                </div>
+            </div>
+
+            <div class="skills-section">
+                <h3>✨ Soft Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-item fade-in">Structurée</div>
+                    <div class="skill-item fade-in">Autonome</div>
+                    <div class="skill-item fade-in">Orientée résultats</div>
+                    <div class="skill-item fade-in">À l'aise avec les dirigeants</div>
+                    <div class="skill-item fade-in">Capacité d'analyse</div>
+                    <div class="skill-item fade-in">Dynamique & énergique</div>
+                </div>
+            </div>
+
+            <div class="skills-section">
+                <h3>🌍 Langues</h3>
+                <div class="skills-grid">
+                    <div class="skill-item fade-in">Français - Langue maternelle</div>
+                    <div class="skill-item fade-in">Anglais - B2</div>
+                    <div class="skill-item fade-in">Espagnol - B1</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Expériences Professionnelles</h2>
+            
+            <div class="experience-item fade-in">
+                <h3>Chargée de Marketing Digital</h3>
+                <h4>IT Systèmes • Malakoff | 2024-2026</h4>
+                <p><strong>Contexte :</strong> Entreprise B2B spécialisée dans les solutions IT et cybersécurité.</p>
+                
+                <p><strong>Missions :</strong></p>
+                <ul>
+                    <li>Définition et déploiement d'une stratégie marketing globale, incluant le branding</li>
+                    <li>Création de contenus multiformats (livres blancs, landing pages, posts LinkedIn)</li>
+                    <li>Pilotage du personal branding du CEO</li>
+                    <li>Gestion des réseaux sociaux et du site web</li>
+                    <li>Conception, lancement et optimisation de campagnes LinkedIn Ads</li>
+                    <li>Suivi des KPI marketing et automatisation</li>
+                    <li>Participation au comité RSE et organisation d'événements sportifs à impact social</li>
+                </ul>
+                
+                <div class="results">
+                    <strong>📊 Résultats :</strong>
+                    <ul>
+                        <li>+214k d'impressions LinkedIn sur 2025</li>
+                        <li>Lancement de +10 campagnes de lead acquisition LinkedIn Ads</li>
+                        <li>Création d'une identité de marque forte</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item fade-in">
+                <h3>Développement Commercial & Chargée de Projet Événementiel</h3>
+                <h4>Evenementciel • Arcueil | 2021-2024</h4>
+                <p><strong>Contexte :</strong> Agence spécialisée dans l'organisation d'événements.</p>
+                
+                <p><strong>Missions :</strong></p>
+                <ul>
+                    <li>Développement et mise en œuvre d'une stratégie de communication globale</li>
+                    <li>Création de contenus multiformats</li>
+                    <li>Gestion des réseaux sociaux et du site web</li>
+                    <li>Prospection et gestion de portefeuille clients</li>
+                    <li>Mise en œuvre de projets événementiels</li>
+                </ul>
+                
+                <div class="results">
+                    <strong>📊 Résultats :</strong>
+                    <ul>
+                        <li>CA cumulé : 630k€ avec un panier moyen de 350€</li>
+                        <li>+840 événements organisés</li>
+                        <li>Identité renforcée via création de charte graphique</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision">
+        <div class="container">
+            <h2>Ma Vision du Marketing B2B</h2>
+            <div class="vision-content fade-in">
+                <p>
+                    <strong>Le marketing B2B d'aujourd'hui n'est plus une simple fonction support.</strong> C'est un moteur de croissance qui doit être directement aligné avec les objectifs business de l'entreprise. Dans un monde où les décideurs sont de plus en plus informés et exigeants, le marketing doit apporter de la valeur à chaque étape du parcours client.
+                </p>
+                <p>
+                    <strong>Le personal branding est devenu clé.</strong> Les entreprises n'achètent plus seulement des produits ou services, elles achètent de la confiance. Les dirigeants qui incarnent leur marque créent des connexions authentiques et génèrent une visibilité précieuse. C'est pourquoi j'ai fait du pilotage du personal branding une priorité dans mes missions.
+                </p>
+                <p>
+                    <strong>Le marketing doit être business-driven.</strong> Chaque action marketing doit pouvoir se traduire en résultats mesurables : leads qualifiés, opportunités commerciales, CA généré. C'est cette approche orientée performance qui fait la différence entre un marketing "qui communique" et un marketing qui transforme réellement l'entreprise.
+                </p>
+                <p>
+                    Mon approche combine stratégie, opérationnel et analyse continue pour créer un marketing qui performe et s'adapte en permanence aux besoins du marché.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:oxanadelaunaypro@gmail.com" style="color: var(--primary); text-decoration: none; font-weight: 600;">oxanadelaunaypro@gmail.com</a></p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📱</div>
+                    <h3>Téléphone</h3>
+                    <p style="font-weight: 600;">+33 06 76 15 42 68</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p><a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Connectons-nous</a></p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <div class="contact-icon">📍</div>
+                    <h3>Localisation</h3>
+                    <p style="font-weight: 600;">Montrouge, France</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Oxana Delaunay - Tous droits réservés</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
