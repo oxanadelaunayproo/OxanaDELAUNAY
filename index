@@ -1,785 +1,524 @@
-Put your HTML text here<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oxana Delaunay - Marketing Stratégique & Digital B2B</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #C41212;
-            --secondary: #FFEFF7;
-            --white: #FFFFFF;
-            --dark: #1a1a1a;
-            --text: #333333;
-            --gray: #f8f9fa;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background: var(--white);
-        }
-
-        /* Navigation moderne avec blur */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(196, 18, 18, 0.08);
-            z-index: 1000;
-            padding: 1.2rem 0;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.8rem 0;
-            box-shadow: 0 2px 30px rgba(196, 18, 18, 0.15);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 0.95rem;
-            position: relative;
-            transition: color 0.3s;
-            letter-spacing: 0.3px;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        section {
-            min-height: 100vh;
-            padding: 8rem 2rem 5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        /* Hero moderne avec animations */
-        .hero {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--white) 50%, var(--gray) 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(196, 18, 18, 0.1) 0%, transparent 70%);
-            top: -300px;
-            right: -300px;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-50px, 50px) rotate(180deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        h1 span {
-            color: var(--primary);
-            display: inline-block;
-            animation: fadeIn 1s ease 0.3s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        h2 {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1.5rem;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), transparent);
-            border-radius: 2px;
-        }
-
-        .subtitle {
-            font-size: 1.6rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .tagline {
-            font-size: 1.3rem;
-            color: var(--text);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), #a00f0f);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin: 1.5rem 0;
-            box-shadow: 0 10px 30px rgba(196, 18, 18, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #a00f0f);
-            color: var(--white);
-            box-shadow: 0 10px 30px rgba(196, 18, 18, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(196, 18, 18, 0.4);
-        }
-
-        .btn-secondary {
-            background: var(--white);
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        /* Sections avec design moderne */
-        #about {
-            background: var(--white);
-        }
-
-        .about-intro {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--text);
-            line-height: 1.8;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .about-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            border: 1px solid rgba(196, 18, 18, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: linear-gradient(180deg, var(--primary), #a00f0f);
-            transition: height 0.4s ease;
-        }
-
-        .about-card:hover::before {
-            height: 100%;
-        }
-
-        .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(196, 18, 18, 0.15);
-        }
-
-        .about-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-weight: 700;
-            font-size: 1.3rem;
-        }
-
-        #skills {
-            background: var(--gray);
-        }
-
-        .skills-section {
-            margin: 3rem 0;
-        }
-
-        .skills-section h3 {
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            font-size: 1.6rem;
-            font-weight: 700;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .skill-item {
-            background: var(--white);
-            padding: 1.2rem 1.5rem;
-            border-radius: 15px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-            font-weight: 500;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .skill-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 8px 25px rgba(196, 18, 18, 0.15);
-        }
-
-        #experience {
-            background: var(--white);
-        }
-
-        .experience-item {
-            background: var(--gray);
-            padding: 3rem;
-            border-radius: 20px;
-            margin-bottom: 3rem;
-            border-left: 6px solid var(--primary);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        .experience-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 15px 40px rgba(196, 18, 18, 0.15);
-        }
-
-        .experience-item h3 {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .experience-item h4 {
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .experience-item ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .experience-item li {
-            margin-bottom: 0.8rem;
-            padding-left: 0.5rem;
-        }
-
-        .results {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-top: 1.5rem;
-            border: 2px dashed rgba(196, 18, 18, 0.2);
-        }
-
-        .results strong {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        #vision {
-            background: var(--dark);
-            color: var(--white);
-        }
-
-        #vision h2 {
-            color: var(--white);
-        }
-
-        #vision h2::after {
-            background: linear-gradient(90deg, var(--primary), transparent);
-        }
-
-        .vision-content {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 20px;
-            border-left: 6px solid var(--primary);
-            backdrop-filter: blur(10px);
-        }
-
-        .vision-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.15rem;
-            line-height: 1.8;
-        }
-
-        #contact {
-            background: var(--secondary);
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(196, 18, 18, 0.1);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(196, 18, 18, 0.2);
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-card:hover .contact-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        footer {
-            background: var(--dark);
-            color: var(--white);
-            text-align: center;
-            padding: 2.5rem;
-            font-size: 0.95rem;
-        }
-
-        /* Animations au scroll */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-                padding: 0 1rem;
-            }
-
-            section {
-                padding: 5rem 1.5rem 3rem;
-            }
-
-            .btn {
-                padding: 1rem 2rem;
-                font-size: 0.95rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxana Delaunay — Chargée de Marketing Digital & Événementiel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0edf8;
+    --bg2: #ece8f5;
+    --white: #ffffff;
+    --dark: #12102a;
+    --mid: #4a4769;
+    --light: #8e8aab;
+    --gradient: linear-gradient(135deg, #ff7043 0%, #ff4081 50%, #e91e8c 100%);
+    --gradient-btn: linear-gradient(135deg, #ff8c42 0%, #e91e8c 100%);
+    --purple: #7c3aed;
+    --purple-light: #ede9fe;
+    --purple-mid: #a78bfa;
+    --orange: #ff7043;
+    --pink: #e91e8c;
+    --border: #e0dbf0;
+    --card-shadow: 0 8px 32px rgba(124,58,237,0.08);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--dark); overflow-x:hidden; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem 5vw;
+    background:rgba(240,237,248,0.92); backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(255,255,255,0.6); transition:box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow:0 2px 20px rgba(124,58,237,0.1); }
+  .nav-logo {
+    font-size:1.4rem; font-weight:800; text-decoration:none;
+    background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .nav-links { display:flex; gap:2.2rem; list-style:none; }
+  .nav-links a { font-size:0.88rem; font-weight:500; color:var(--mid); text-decoration:none; transition:color 0.2s; }
+  .nav-links a:hover { color:var(--orange); }
+  .nav-cta {
+    background:var(--gradient-btn); color:#fff;
+    padding:0.55rem 1.4rem; border-radius:50px;
+    font-size:0.82rem; font-weight:600; text-decoration:none;
+    box-shadow:0 4px 15px rgba(233,30,140,0.3); transition:opacity 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { opacity:0.9; transform:translateY(-1px); }
+  .burger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .burger span { width:22px; height:2px; background:var(--dark); border-radius:2px; transition:0.3s; }
+  .nav-mobile { display:none; }
+
+  /* HERO */
+  #accueil {
+    min-height:100vh; padding:110px 5vw 80px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:3rem; align-items:center;
+    background:linear-gradient(160deg, #f5f2fc 0%, #ece8f5 40%, #fce8f3 100%);
+  }
+  .badge-dispo {
+    display:inline-flex; align-items:center; gap:0.5rem;
+    background:var(--gradient-btn); color:#fff;
+    padding:0.45rem 1.1rem; border-radius:50px; font-size:0.8rem; font-weight:600;
+    margin-bottom:1.8rem; box-shadow:0 4px 16px rgba(233,30,140,0.3);
+    animation:fadeUp 0.5s ease both;
+  }
+  .badge-dot { width:7px; height:7px; border-radius:50%; background:#fff; animation:blink 2s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero-name { font-size:clamp(2.8rem,6vw,5.5rem); font-weight:800; line-height:1.05; color:var(--dark); animation:fadeUp 0.5s 0.1s ease both; }
+  .hero-name .grad { background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .hero-subtitle {
+    font-size:0.85rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--orange); margin:1rem 0 1.3rem; animation:fadeUp 0.5s 0.15s ease both;
+  }
+  .hero-desc { font-size:1rem; line-height:1.8; color:var(--mid); max-width:520px; animation:fadeUp 0.5s 0.2s ease both; }
+  .hero-desc strong { color:var(--dark); }
+  .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; margin-top:2rem; animation:fadeUp 0.5s 0.25s ease both; }
+  .btn-grad {
+    background:var(--gradient-btn); color:#fff; padding:0.85rem 2rem; border-radius:50px;
+    font-size:0.9rem; font-weight:600; text-decoration:none;
+    box-shadow:0 6px 20px rgba(233,30,140,0.3); transition:opacity 0.2s, transform 0.2s;
+  }
+  .btn-grad:hover { opacity:0.9; transform:translateY(-2px); }
+  .btn-outline {
+    background:transparent; color:var(--dark); padding:0.85rem 2rem; border-radius:50px;
+    font-size:0.9rem; font-weight:600; text-decoration:none;
+    border:2px solid var(--dark); transition:all 0.2s;
+  }
+  .btn-outline:hover { border-color:var(--orange); color:var(--orange); transform:translateY(-2px); }
+  .hero-stats { display:flex; gap:1.2rem; margin-top:2.5rem; flex-wrap:wrap; animation:fadeUp 0.5s 0.3s ease both; }
+  .stat-card {
+    background:var(--white); border-radius:16px; padding:1.2rem 1.5rem;
+    box-shadow:var(--card-shadow); flex:1; min-width:110px;
+  }
+  .stat-num { font-size:1.8rem; font-weight:800; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; }
+  .stat-lbl { font-size:0.72rem; color:var(--light); margin-top:0.3rem; font-weight:500; }
+  .hero-card {
+    background:var(--white); border-radius:24px; padding:2rem;
+    box-shadow:0 16px 60px rgba(124,58,237,0.12); animation:fadeUp 0.5s 0.2s ease both;
+    position:relative; overflow:hidden;
+  }
+  .hero-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--gradient); }
+  .contact-row { display:flex; align-items:center; gap:1rem; padding:0.8rem 0; border-bottom:1px solid var(--border); }
+  .contact-row:last-child { border-bottom:none; }
+  .contact-icon {
+    width:44px; height:44px; border-radius:12px; flex-shrink:0;
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  }
+  .contact-lbl { font-size:0.72rem; color:var(--light); font-weight:500; }
+  .contact-val { font-size:0.88rem; font-weight:600; color:var(--dark); }
+  .contact-val.pink { color:var(--pink); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+  /* SECTIONS */
+  section { padding:90px 5vw; }
+  .s-label {
+    font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;
+    background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    margin-bottom:0.5rem; display:inline-block;
+  }
+  .s-title { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--dark); line-height:1.2; }
+  .s-sub { font-size:0.93rem; color:var(--light); margin-top:0.7rem; max-width:540px; line-height:1.7; }
+  .s-head { margin-bottom:3.5rem; }
+
+  /* COMPÉTENCES */
+  #competences { background:var(--white); }
+  .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:1.3rem; }
+  .skill-card {
+    background:var(--bg); border-radius:20px; padding:1.8rem;
+    border:1px solid var(--border); transition:all 0.3s; position:relative; overflow:hidden;
+  }
+  .skill-card::after {
+    content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+    background:var(--gradient); transform:scaleX(0); transform-origin:left; transition:transform 0.3s;
+  }
+  .skill-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(124,58,237,0.12); }
+  .skill-card:hover::after { transform:scaleX(1); }
+  .sk-icon {
+    width:48px; height:48px; border-radius:14px;
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:1rem;
+  }
+  .sk-name { font-weight:700; font-size:0.95rem; margin-bottom:0.5rem; }
+  .sk-desc { font-size:0.82rem; color:var(--light); line-height:1.65; }
+  .tools-wrap { margin-top:3.5rem; }
+  .tools-lbl { font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--mid); margin-bottom:1rem; }
+  .tools-row { display:flex; flex-wrap:wrap; gap:0.6rem; }
+  .tool {
+    background:var(--bg); border:1.5px solid var(--border); padding:0.4rem 1rem; border-radius:50px;
+    font-size:0.8rem; font-weight:500; color:var(--mid); transition:all 0.2s;
+  }
+  .tool:hover { border-color:var(--purple); color:var(--purple); background:var(--purple-light); }
+
+  /* EXPÉRIENCES */
+  #experience { background:var(--bg); }
+  .xp-list { display:flex; flex-direction:column; gap:2rem; }
+  .xp-card {
+    background:var(--white); border-radius:24px; padding:2.2rem;
+    box-shadow:var(--card-shadow); border:1px solid var(--border);
+    transition:box-shadow 0.3s; position:relative; overflow:hidden;
+  }
+  .xp-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--gradient); }
+  .xp-card:hover { box-shadow:0 16px 50px rgba(124,58,237,0.14); }
+  .xp-date {
+    display:inline-block; background:var(--purple-light); color:var(--purple);
+    padding:0.3rem 0.9rem; border-radius:50px; font-size:0.75rem; font-weight:700; margin-bottom:0.8rem;
+  }
+  .xp-title { font-size:1.2rem; font-weight:700; color:var(--dark); margin-bottom:0.2rem; }
+  .xp-co { font-size:0.85rem; color:var(--light); margin-bottom:1.2rem; }
+  .xp-ul { list-style:none; margin-bottom:1.5rem; }
+  .xp-ul li {
+    font-size:0.88rem; color:var(--mid); line-height:1.65;
+    padding:0.35rem 0 0.35rem 1.3rem; position:relative; border-bottom:1px solid var(--border);
+  }
+  .xp-ul li:last-child { border-bottom:none; }
+  .xp-ul li::before {
+    content:'→'; position:absolute; left:0;
+    background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    font-weight:700; font-size:0.8rem;
+  }
+  .xp-kpis { display:flex; flex-wrap:wrap; gap:0.7rem; }
+  .kpi { background:linear-gradient(135deg,#fef3c7,#fde68a); padding:0.35rem 0.9rem; border-radius:8px; font-size:0.78rem; font-weight:700; color:#92400e; }
+
+  /* PORTFOLIO */
+  #portfolio { background:var(--white); }
+  .port-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.3rem; }
+  .port-card { background:var(--bg); border-radius:20px; overflow:hidden; border:1px solid var(--border); transition:all 0.3s; }
+  .port-card:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(124,58,237,0.13); }
+  .port-top { height:150px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .pt1{background:linear-gradient(135deg,#0077B5,#005f99)} .pt2{background:linear-gradient(135deg,#ff7043,#e91e8c)}
+  .pt3{background:linear-gradient(135deg,#10b981,#059669)} .pt4{background:linear-gradient(135deg,#f59e0b,#d97706)}
+  .pt5{background:linear-gradient(135deg,#7c3aed,#6d28d9)} .pt6{background:linear-gradient(135deg,#06b6d4,#0891b2)}
+  .port-icon { font-size:3.5rem; opacity:0.25; filter:brightness(0) invert(1); }
+  .port-badge {
+    position:absolute; bottom:10px; right:10px;
+    background:rgba(255,255,255,0.2); backdrop-filter:blur(8px);
+    padding:0.3rem 0.8rem; border-radius:20px; color:#fff; font-size:0.75rem; font-weight:700;
+  }
+  .port-body { padding:1.4rem; }
+  .port-cat { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:0.4rem; }
+  .port-title { font-weight:700; font-size:0.95rem; margin-bottom:0.5rem; color:var(--dark); }
+  .port-desc { font-size:0.82rem; color:var(--light); line-height:1.6; margin-bottom:1rem; }
+  .port-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+  .port-tag { background:var(--white); border:1px solid var(--border); padding:0.22rem 0.65rem; border-radius:50px; font-size:0.72rem; color:var(--mid); font-weight:500; }
+
+  /* LANGUES */
+  #langues { background:var(--bg); }
+  .lang-grid { display:flex; flex-wrap:wrap; gap:1.3rem; }
+  .lang-card {
+    flex:1; min-width:200px; background:var(--white); border-radius:20px;
+    padding:2rem; text-align:center; border:1px solid var(--border);
+    box-shadow:var(--card-shadow); transition:all 0.3s;
+  }
+  .lang-card:hover { transform:translateY(-3px); box-shadow:0 12px 35px rgba(124,58,237,0.14); }
+  .lang-flag { font-size:2.5rem; margin-bottom:0.8rem; }
+  .lang-name { font-weight:700; font-size:1rem; margin-bottom:0.2rem; }
+  .lang-lvl { font-size:0.8rem; color:var(--light); margin-bottom:1.2rem; }
+  .lang-bar { height:6px; background:var(--border); border-radius:6px; overflow:hidden; }
+  .lang-fill { height:100%; background:var(--gradient); border-radius:6px; }
+
+  /* FORMATION */
+  #formation { background:var(--white); }
+  .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.3rem; }
+  .edu-card {
+    background:var(--bg); border-radius:20px; padding:2rem; border:1px solid var(--border);
+    transition:all 0.3s; position:relative; overflow:hidden;
+  }
+  .edu-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--gradient); }
+  .edu-card:hover { transform:translateY(-3px); box-shadow:0 12px 35px rgba(124,58,237,0.12); }
+  .edu-year { font-size:2.2rem; font-weight:800; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; margin-bottom:1rem; }
+  .edu-deg { font-weight:700; font-size:1rem; margin-bottom:0.3rem; }
+  .edu-sch { font-size:0.85rem; color:var(--light); }
+  .edu-badge { display:inline-block; margin-top:0.8rem; background:var(--gradient-btn); color:#fff; padding:0.2rem 0.8rem; border-radius:50px; font-size:0.7rem; font-weight:600; }
+
+  /* TÉMOIGNAGES */
+  #temoignages { background:var(--bg); }
+  .testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.3rem; }
+  .testi-card { background:var(--white); border-radius:20px; padding:2rem; border:1px solid var(--border); box-shadow:var(--card-shadow); transition:all 0.3s; }
+  .testi-card:hover { transform:translateY(-3px); box-shadow:0 12px 35px rgba(124,58,237,0.14); }
+  .testi-q { font-size:3rem; line-height:1; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:1rem; font-weight:800; }
+  .testi-txt { font-size:0.88rem; color:var(--mid); line-height:1.75; font-style:italic; margin-bottom:1.5rem; }
+  .testi-author { display:flex; align-items:center; gap:0.9rem; }
+  .testi-av { width:42px; height:42px; border-radius:50%; flex-shrink:0; background:var(--gradient); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:0.82rem; }
+  .testi-name { font-weight:700; font-size:0.85rem; }
+  .testi-role { font-size:0.75rem; color:var(--light); }
+
+  /* CONTACT */
+  #contact { background:linear-gradient(160deg,#1a1035 0%,#2d1b5e 60%,#1a1035 100%); }
+  .contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+  .c-label { font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:0.6rem; display:inline-block; }
+  .c-title { font-size:clamp(2rem,4vw,3rem); font-weight:800; color:#fff; line-height:1.2; margin-bottom:1rem; }
+  .c-desc { font-size:0.92rem; color:rgba(255,255,255,0.5); line-height:1.75; margin-bottom:2rem; }
+  .c-links { display:flex; flex-direction:column; gap:0.8rem; }
+  .c-link { display:flex; align-items:center; gap:1rem; color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.88rem; padding:0.7rem; border-radius:12px; transition:all 0.2s; }
+  .c-link:hover { background:rgba(255,255,255,0.05); color:#fff; }
+  .c-link-ico { width:38px; height:38px; border-radius:10px; background:linear-gradient(135deg,#7c3aed,#a855f7); display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .c-btns { display:flex; flex-direction:column; gap:1rem; }
+  .c-btn-main { background:var(--gradient-btn); color:#fff; padding:1.1rem 2rem; border-radius:50px; font-size:0.92rem; font-weight:700; text-decoration:none; text-align:center; box-shadow:0 8px 25px rgba(233,30,140,0.4); transition:opacity 0.2s,transform 0.2s; }
+  .c-btn-main:hover { opacity:0.9; transform:translateY(-2px); }
+  .c-btn-li { border:2px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); padding:1.1rem 2rem; border-radius:50px; font-size:0.92rem; font-weight:600; text-decoration:none; text-align:center; transition:all 0.2s; }
+  .c-btn-li:hover { border-color:var(--purple-mid); color:#fff; }
+  .c-btn-cv { border:1.5px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.4); padding:0.9rem 2rem; border-radius:50px; font-size:0.82rem; font-weight:500; text-decoration:none; text-align:center; display:flex; align-items:center; justify-content:center; gap:0.5rem; transition:all 0.2s; }
+  .c-btn-cv:hover { border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.8); }
+
+  /* FOOTER */
+  footer { background:#0e0c1e; padding:1.8rem 5vw; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+  .foot-copy { font-size:0.78rem; color:rgba(255,255,255,0.25); }
+  .foot-socials { display:flex; gap:0.8rem; }
+  .foot-soc { width:34px; height:34px; border-radius:50%; border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.3); text-decoration:none; font-size:0.85rem; transition:all 0.2s; }
+  .foot-soc:hover { border-color:var(--purple-mid); color:var(--purple-mid); }
+
+  /* RESPONSIVE */
+  @media (max-width:860px) {
+    #accueil { grid-template-columns:1fr; padding-top:100px; }
+    .contact-inner { grid-template-columns:1fr; gap:3rem; }
+    .edu-grid { grid-template-columns:1fr; }
+    .nav-links,.nav-cta { display:none; }
+    .burger { display:flex; }
+    .nav-mobile.open {
+      display:flex; flex-direction:column;
+      position:fixed; top:64px; left:0; right:0; bottom:0;
+      background:var(--bg); padding:2rem 5vw; gap:1.2rem; z-index:99;
+      border-top:1px solid var(--border);
+    }
+    .nav-mobile a { font-size:1.1rem; font-weight:600; color:var(--dark); text-decoration:none; padding:0.8rem 0; border-bottom:1px solid var(--border); }
+    .nav-mobile .mob-cta { background:var(--gradient-btn); color:#fff; padding:0.9rem; border-radius:50px; text-align:center; margin-top:0.5rem; font-weight:700; border:none; }
+  }
+  @media (max-width:560px) {
+    section { padding:65px 5vw; }
+    .hero-btns { flex-direction:column; }
+    .hero-stats { flex-direction:column; }
+    .stat-card { min-width:unset; }
+    .port-grid,.skills-grid { grid-template-columns:1fr; }
+    .lang-grid { flex-direction:column; }
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity:0; transform:translateY(22px); transition:opacity 0.55s ease, transform 0.55s ease, box-shadow 0.3s, border-color 0.3s; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+</style>
 </head>
 <body>
-    <nav id="navbar">
-        <ul>
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#skills">Compétences</a></li>
-            <li><a href="#experience">Expériences</a></li>
-            <li><a href="#vision">Ma vision</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h1>Marketing Stratégique et Digital B2B</span></h1>
-            <p class="subtitle">Oxana Delaunay</p>
-            <p class="tagline">J'aide les entreprises B2B à générer des leads et structurer leur stratégie marketing</p>
-            <div class="badge">🎯 Recherche CDI</div>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">📩 Me contacter</a>
-                <a href="#" class="btn btn-secondary" onclick="alert('Fonctionnalité de téléchargement à configurer')">📄 Télécharger mon CV</a>
-            </div>
-        </div>
-    </section>
+<nav id="nav">
+  <a class="nav-logo" href="#accueil">OD</a>
+  <ul class="nav-links">
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:oxanadelaunaypro@gmail.com" class="nav-cta">Me contacter</a>
+  <div class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
 
-    <section id="about">
-        <div class="container">
-            <h2>À propos</h2>
-            <p class="about-intro">
-                Curieuse et dynamique, je travaille dans le marketing digital et l'événementiel avec un intérêt pour des projets concrets et utiles. Mon objectif ? Progresser, performer et apporter de la valeur à tout ce que j'entreprends.
-            </p>
-            
-            <div class="about-grid">
-                <div class="about-card fade-in">
-                    <h3>💡 Qui je suis</h3>
-                    <p>Passionnée par le marketing B2B, spécialisée dans les secteurs IT, cybersécurité et automatisation. Actuellement en MSC Strategic Marketing à Excelia Business School.</p>
-                </div>
-                
-                <div class="about-card fade-in">
-                    <h3>🎯 Ce que je sais faire</h3>
-                    <p>Élaborer et déployer des stratégies marketing complètes : lead generation, personal branding, contenus, LinkedIn Ads, et automatisation.</p>
-                </div>
-                
-                <div class="about-card fade-in">
-                    <h3>🚀 Ce que je cherche</h3>
-                    <p>Un CDI où allier stratégie et opérationnel, dans un environnement B2B exigeant, où le marketing est business-driven.</p>
-                </div>
-                
-                <div class="about-card fade-in">
-                    <h3>⚡ Comment je travaille</h3>
-                    <p>Structurée, autonome, orientée résultats. À l'aise avec des interlocuteurs dirigeants et capable d'analyser pour optimiser continuellement.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="nav-mobile" id="navMob">
+  <a href="#competences" onclick="toggleMenu()">Compétences</a>
+  <a href="#experience" onclick="toggleMenu()">Expérience</a>
+  <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
+  <a href="#formation" onclick="toggleMenu()">Formation</a>
+  <a href="#langues" onclick="toggleMenu()">Langues</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="mailto:oxanadelaunaypro@gmail.com" class="mob-cta">Me contacter →</a>
+</div>
 
-    <section id="skills">
-        <div class="container">
-            <h2>Compétences</h2>
-            
-            <div class="skills-section">
-                <h3>💼 Hard Skills</h3>
-                <div class="skills-grid">
-                    <div class="skill-item fade-in">Stratégie marketing B2B</div>
-                    <div class="skill-item fade-in">Lead generation</div>
-                    <div class="skill-item fade-in">Marketing automation</div>
-                    <div class="skill-item fade-in">LinkedIn Ads / Emailing</div>
-                    <div class="skill-item fade-in">Contenus (livres blancs, landing pages)</div>
-                    <div class="skill-item fade-in">CRM (HubSpot, Lemlist)</div>
-                    <div class="skill-item fade-in">Personal branding</div>
-                    <div class="skill-item fade-in">Branding & identité visuelle</div>
-                    <div class="skill-item fade-in">Réseaux sociaux B2B</div>
-                    <div class="skill-item fade-in">Événementiel</div>
-                    <div class="skill-item fade-in">Adobe Creative Cloud, Canva</div>
-                    <div class="skill-item fade-in">Make, Zapier, Claude, Gemini</div>
-                </div>
-            </div>
+<!-- HERO -->
+<section id="accueil">
+  <div>
+    <div class="badge-dispo"><span class="badge-dot"></span> ✨ Disponible pour de nouveaux projets</div>
+    <h1 class="hero-name">Oxana <span class="grad">Delaunay</span></h1>
+    <p class="hero-subtitle">Marketing Digital · Événementiel · Île-de-France</p>
+    <p class="hero-desc">
+      Chargée de communication passionnée par le marketing digital et l'événementiel.<br>
+      Mon objectif ? <strong>Progresser, performer et apporter de la valeur</strong> à tout ce que j'entreprends.
+      J'aide les entreprises à générer de la visibilité et à structurer leurs stratégies marketing et de communication.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-grad">Me contacter →</a>
+      <a href="#portfolio" class="btn-outline">Voir mon portfolio</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card reveal"><div class="stat-num">+214k</div><div class="stat-lbl">Impressions LinkedIn</div></div>
+      <div class="stat-card reveal"><div class="stat-num">+15</div><div class="stat-lbl">Campagnes ads</div></div>
+      <div class="stat-card reveal"><div class="stat-num">+840</div><div class="stat-lbl">Événements organisés</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="hero-card reveal">
+      <div class="contact-row"><div class="contact-icon">📧</div><div><div class="contact-lbl">Email</div><div class="contact-val">oxanadelaunaypro@gmail.com</div></div></div>
+      <div class="contact-row"><div class="contact-icon">📱</div><div><div class="contact-lbl">Téléphone</div><div class="contact-val">+33 06 76 15 42 68</div></div></div>
+      <div class="contact-row"><div class="contact-icon">📍</div><div><div class="contact-lbl">Localisation</div><div class="contact-val">Montrouge, France</div></div></div>
+      <div class="contact-row"><div class="contact-icon">💼</div><div><div class="contact-lbl">LinkedIn</div><div class="contact-val pink">@oxanadelaunay</div></div></div>
+    </div>
+  </div>
+</section>
 
-            <div class="skills-section">
-                <h3>✨ Soft Skills</h3>
-                <div class="skills-grid">
-                    <div class="skill-item fade-in">Structurée</div>
-                    <div class="skill-item fade-in">Autonome</div>
-                    <div class="skill-item fade-in">Orientée résultats</div>
-                    <div class="skill-item fade-in">À l'aise avec les dirigeants</div>
-                    <div class="skill-item fade-in">Capacité d'analyse</div>
-                    <div class="skill-item fade-in">Dynamique & énergique</div>
-                </div>
-            </div>
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="s-head">
+    <p class="s-label">Expertise</p>
+    <h2 class="s-title">💪 Mes compétences</h2>
+    <p class="s-sub">Une palette diversifiée pour répondre à tous vos besoins en communication et marketing digital.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal"><div class="sk-icon">🎯</div><div class="sk-name">Marketing digital</div><div class="sk-desc">Stratégie globale, campagnes LinkedIn Ads, personal branding, optimisation des KPI et acquisition de leads qualifiés.</div></div>
+    <div class="skill-card reveal"><div class="sk-icon">🎨</div><div class="sk-name">Branding & identité visuelle</div><div class="sk-desc">Création d'identités visuelles fortes, chartes graphiques cohérentes et positionnement de marque différenciant.</div></div>
+    <div class="skill-card reveal"><div class="sk-icon">🎪</div><div class="sk-name">Événementiel</div><div class="sk-desc">Conception et organisation d'événements à impact, gestion de projets complexes et coordination de parties prenantes.</div></div>
+    <div class="skill-card reveal"><div class="sk-icon">✍️</div><div class="sk-name">Rédaction & SEO</div><div class="sk-desc">Création de contenus multiformats, copywriting engageant, optimisation SEO et stratégie éditoriale cross-canal.</div></div>
+    <div class="skill-card reveal"><div class="sk-icon">📊</div><div class="sk-name">Gestion de projet</div><div class="sk-desc">Pilotage de projets digitaux, gestion budgétaire, coordination d'équipes et respect des deadlines.</div></div>
+    <div class="skill-card reveal"><div class="sk-icon">🤖</div><div class="sk-name">IA & Automatisation</div><div class="sk-desc">Intégration d'outils IA dans les workflows marketing, automatisation de processus et gain de productivité.</div></div>
+  </div>
+  <div class="tools-wrap">
+    <p class="tools-lbl">🛠 Outils maîtrisés</p>
+    <div class="tools-row">
+      <span class="tool">LinkedIn Campaign Manager</span><span class="tool">Meta Ads Manager</span>
+      <span class="tool">Google Analytics</span><span class="tool">Google Ads</span>
+      <span class="tool">Canva</span><span class="tool">Adobe Suite</span>
+      <span class="tool">HubSpot</span><span class="tool">Notion</span>
+      <span class="tool">WordPress</span><span class="tool">Mailchimp</span>
+      <span class="tool">Semrush / Ahrefs</span><span class="tool">Make (Integromat)</span>
+      <span class="tool">ChatGPT / Claude</span>
+    </div>
+  </div>
+</section>
 
-            <div class="skills-section">
-                <h3>🌍 Langues</h3>
-                <div class="skills-grid">
-                    <div class="skill-item fade-in">Français - Langue maternelle</div>
-                    <div class="skill-item fade-in">Anglais - B2</div>
-                    <div class="skill-item fade-in">Espagnol - B1</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- EXPÉRIENCES -->
+<section id="experience">
+  <div class="s-head">
+    <p class="s-label">Parcours</p>
+    <h2 class="s-title">💼 Expériences professionnelles</h2>
+    <p class="s-sub">Un parcours riche en apprentissages et en réalisations concrètes.</p>
+  </div>
+  <div class="xp-list">
+    <div class="xp-card reveal">
+      <span class="xp-date">2024 — Présent</span>
+      <h3 class="xp-title">Chargée de marketing digital</h3>
+      <p class="xp-co">IT Systemes · Malakoff &nbsp;·&nbsp; <em>Membre du comité RSE</em></p>
+      <ul class="xp-ul">
+        <li>Définition et déploiement d'une stratégie marketing globale, incluant le branding</li>
+        <li>Création de contenus multiformats pour tous les canaux digitaux</li>
+        <li>Pilotage du personal branding du CEO, des réseaux sociaux et du site web</li>
+        <li>Conception, lancement et optimisation de +15 campagnes LinkedIn Ads avec suivi des KPI</li>
+        <li>Organisation d'événements sportifs à impact social dans le cadre de la stratégie RSE</li>
+      </ul>
+      <div class="xp-kpis">
+        <span class="kpi">+214k impressions LinkedIn</span>
+        <span class="kpi">+15 campagnes ads</span>
+        <span class="kpi">Identité de marque forte</span>
+      </div>
+    </div>
+    <div class="xp-card reveal">
+      <span class="xp-date">2021 — 2024</span>
+      <h3 class="xp-title">Développement commercial &amp; Chargée de projet événementiel</h3>
+      <p class="xp-co">Evenementciel · Arcueil</p>
+      <ul class="xp-ul">
+        <li>Développement et mise en œuvre d'une stratégie de communication globale</li>
+        <li>Prospection et gestion d'un portefeuille clients avec 630k€ de CA cumulé</li>
+        <li>Organisation et pilotage de +840 événements pour seniors de bout en bout</li>
+        <li>Gestion des réseaux sociaux, du site web et création de contenus multiformats</li>
+      </ul>
+      <div class="xp-kpis">
+        <span class="kpi">CA cumulé : 630k€</span>
+        <span class="kpi">+840 événements organisés</span>
+        <span class="kpi">Panier moyen : 350€</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="experience">
-        <div class="container">
-            <h2>Expériences Professionnelles</h2>
-            
-            <div class="experience-item fade-in">
-                <h3>Chargée de Marketing Digital</h3>
-                <h4>IT Systèmes • Malakoff | 2024-2026</h4>
-                <p><strong>Contexte :</strong> Entreprise B2B spécialisée dans les solutions IT et cybersécurité.</p>
-                
-                <p><strong>Missions :</strong></p>
-                <ul>
-                    <li>Définition et déploiement d'une stratégie marketing globale, incluant le branding</li>
-                    <li>Création de contenus multiformats (livres blancs, landing pages, posts LinkedIn)</li>
-                    <li>Pilotage du personal branding du CEO</li>
-                    <li>Gestion des réseaux sociaux et du site web</li>
-                    <li>Conception, lancement et optimisation de campagnes LinkedIn Ads</li>
-                    <li>Suivi des KPI marketing et automatisation</li>
-                    <li>Participation au comité RSE et organisation d'événements sportifs à impact social</li>
-                </ul>
-                
-                <div class="results">
-                    <strong>📊 Résultats :</strong>
-                    <ul>
-                        <li>+214k d'impressions LinkedIn sur 2025</li>
-                        <li>Lancement de +10 campagnes de lead acquisition LinkedIn Ads</li>
-                        <li>Création d'une identité de marque forte</li>
-                    </ul>
-                </div>
-            </div>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="s-head">
+    <p class="s-label">Réalisations</p>
+    <h2 class="s-title">🚀 Portfolio</h2>
+    <p class="s-sub">Découvrez quelques-uns de mes projets les plus marquants.</p>
+  </div>
+  <div class="port-grid">
+    <div class="port-card reveal"><div class="port-top pt1"><span class="port-icon">📊</span><span class="port-badge">+214k impressions</span></div><div class="port-body"><p class="port-cat">LinkedIn Ads · Lead Gen</p><h3 class="port-title">Campagnes LinkedIn Ads</h3><p class="port-desc">+15 campagnes conçues et optimisées avec suivi rigoureux des KPI et ROI mesuré.</p><div class="port-tags"><span class="port-tag">LinkedIn Ads</span><span class="port-tag">Analytics</span><span class="port-tag">Lead gen</span></div></div></div>
+    <div class="port-card reveal"><div class="port-top pt2"><span class="port-icon">🎨</span><span class="port-badge">Identité de marque</span></div><div class="port-body"><p class="port-cat">Branding · Design</p><h3 class="port-title">Refonte identité visuelle & Personal branding CEO</h3><p class="port-desc">Développement complet de l'identité visuelle d'IT Systemes et du personal branding du CEO.</p><div class="port-tags"><span class="port-tag">Branding</span><span class="port-tag">Personal branding</span><span class="port-tag">Canva</span></div></div></div>
+    <div class="port-card reveal"><div class="port-top pt3"><span class="port-icon">🌿</span><span class="port-badge">Impact social</span></div><div class="port-body"><p class="port-cat">Événementiel · RSE</p><h3 class="port-title">Événements sportifs à impact social</h3><p class="port-desc">Organisation d'événements sportifs RSE, de la conception à l'exécution et au bilan d'impact.</p><div class="port-tags"><span class="port-tag">Événementiel</span><span class="port-tag">RSE</span><span class="port-tag">Gestion de projet</span></div></div></div>
+    <div class="port-card reveal"><div class="port-top pt4"><span class="port-icon">📝</span><span class="port-badge">Multi-canal</span></div><div class="port-body"><p class="port-cat">Content Marketing · SEO</p><h3 class="port-title">Stratégie de contenu multi-canal</h3><p class="port-desc">Stratégie éditoriale complète : réseaux sociaux, blog, newsletters, infographies et supports print.</p><div class="port-tags"><span class="port-tag">Content</span><span class="port-tag">SEO</span><span class="port-tag">Social media</span></div></div></div>
+    <div class="port-card reveal"><div class="port-top pt5"><span class="port-icon">💼</span><span class="port-badge">630k€ CA</span></div><div class="port-body"><p class="port-cat">Business Development · B2B</p><h3 class="port-title">Développement commercial — 630k€ de CA</h3><p class="port-desc">Prospection et gestion d'un portefeuille clients ayant généré 630k€ de chiffre d'affaires cumulé.</p><div class="port-tags"><span class="port-tag">B2B</span><span class="port-tag">CRM</span><span class="port-tag">Sales</span></div></div></div>
+    <div class="port-card reveal"><div class="port-top pt6"><span class="port-icon">🎊</span><span class="port-badge">+840 événements</span></div><div class="port-body"><p class="port-cat">Événementiel · Coordination</p><h3 class="port-title">+840 événements organisés</h3><p class="port-desc">Pilotage opérationnel complet avec coordination de prestataires, suivi budgétaire et satisfaction client.</p><div class="port-tags"><span class="port-tag">Event planning</span><span class="port-tag">Coordination</span><span class="port-tag">B2C</span></div></div></div>
+  </div>
+</section>
 
-            <div class="experience-item fade-in">
-                <h3>Développement Commercial & Chargée de Projet Événementiel</h3>
-                <h4>Evenementciel • Arcueil | 2021-2024</h4>
-                <p><strong>Contexte :</strong> Agence spécialisée dans l'organisation d'événements.</p>
-                
-                <p><strong>Missions :</strong></p>
-                <ul>
-                    <li>Développement et mise en œuvre d'une stratégie de communication globale</li>
-                    <li>Création de contenus multiformats</li>
-                    <li>Gestion des réseaux sociaux et du site web</li>
-                    <li>Prospection et gestion de portefeuille clients</li>
-                    <li>Mise en œuvre de projets événementiels</li>
-                </ul>
-                
-                <div class="results">
-                    <strong>📊 Résultats :</strong>
-                    <ul>
-                        <li>CA cumulé : 630k€ avec un panier moyen de 350€</li>
-                        <li>+840 événements organisés</li>
-                        <li>Identité renforcée via création de charte graphique</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- LANGUES -->
+<section id="langues">
+  <div class="s-head">
+    <p class="s-label">Langues</p>
+    <h2 class="s-title">🌍 Compétences linguistiques</h2>
+  </div>
+  <div class="lang-grid">
+    <div class="lang-card reveal"><div class="lang-flag">🇫🇷</div><div class="lang-name">Français</div><div class="lang-lvl">Langue maternelle</div><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div></div>
+    <div class="lang-card reveal"><div class="lang-flag">🇬🇧</div><div class="lang-name">Anglais</div><div class="lang-lvl">Courant — MSC dispensé en anglais</div><div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div></div>
+  </div>
+</section>
 
-    <section id="vision">
-        <div class="container">
-            <h2>Ma Vision du Marketing B2B</h2>
-            <div class="vision-content fade-in">
-                <p>
-                    <strong>Le marketing B2B d'aujourd'hui n'est plus une simple fonction support.</strong> C'est un moteur de croissance qui doit être directement aligné avec les objectifs business de l'entreprise. Dans un monde où les décideurs sont de plus en plus informés et exigeants, le marketing doit apporter de la valeur à chaque étape du parcours client.
-                </p>
-                <p>
-                    <strong>Le personal branding est devenu clé.</strong> Les entreprises n'achètent plus seulement des produits ou services, elles achètent de la confiance. Les dirigeants qui incarnent leur marque créent des connexions authentiques et génèrent une visibilité précieuse. C'est pourquoi j'ai fait du pilotage du personal branding une priorité dans mes missions.
-                </p>
-                <p>
-                    <strong>Le marketing doit être business-driven.</strong> Chaque action marketing doit pouvoir se traduire en résultats mesurables : leads qualifiés, opportunités commerciales, CA généré. C'est cette approche orientée performance qui fait la différence entre un marketing "qui communique" et un marketing qui transforme réellement l'entreprise.
-                </p>
-                <p>
-                    Mon approche combine stratégie, opérationnel et analyse continue pour créer un marketing qui performe et s'adapte en permanence aux besoins du marché.
-                </p>
-            </div>
-        </div>
-    </section>
+<!-- FORMATION -->
+<section id="formation">
+  <div class="s-head">
+    <p class="s-label">Académique</p>
+    <h2 class="s-title">🎓 Parcours académique</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card reveal"><div class="edu-year">2026</div><div class="edu-deg">MSC Strategic Marketing</div><div class="edu-sch">Excelia Business School · Cachan</div><span class="edu-badge">En cours · Enseignement en anglais</span></div>
+    <div class="edu-card reveal"><div class="edu-year">2024</div><div class="edu-deg">Bachelor Marketing</div><div class="edu-sch">PPA Business School · Paris</div></div>
+  </div>
+</section>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <div class="contact-info">
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <p><a href="mailto:oxanadelaunaypro@gmail.com" style="color: var(--primary); text-decoration: none; font-weight: 600;">oxanadelaunaypro@gmail.com</a></p>
-                </div>
-                
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">📱</div>
-                    <h3>Téléphone</h3>
-                    <p style="font-weight: 600;">+33 06 76 15 42 68</p>
-                </div>
-                
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <p><a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Connectons-nous</a></p>
-                </div>
-                
-                <div class="contact-card fade-in">
-                    <div class="contact-icon">📍</div>
-                    <h3>Localisation</h3>
-                    <p style="font-weight: 600;">Montrouge, France</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2025 Oxana Delaunay - Tous droits réservés</p>
-    </footer>
 
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <p class="c-label">Travaillons ensemble</p>
+      <h2 class="c-title">Vous avez un projet en tête ?</h2>
+      <p class="c-desc">Stratégie digitale, branding, événementiel ou campagnes ads — discutons de ce que je peux apporter à votre entreprise. Je réponds sous 24h.</p>
+      <div class="c-links">
+        <a href="mailto:oxanadelaunaypro@gmail.com" class="c-link"><div class="c-link-ico">📧</div> oxanadelaunaypro@gmail.com</a>
+        <a href="tel:+33676154268" class="c-link"><div class="c-link-ico">📱</div> +33 06 76 15 42 68</a>
+        <a href="https://linkedin.com/in/oxanadelaunay" target="_blank" class="c-link"><div class="c-link-ico">💼</div> linkedin.com/in/oxanadelaunay</a>
+        <span class="c-link" style="cursor:default;opacity:0.5"><div class="c-link-ico">📍</div> Montrouge, Île-de-France</span>
+      </div>
+    </div>
+    <div class="c-btns">
+      <a href="mailto:oxanadelaunaypro@gmail.com" class="c-btn-main">📧 &nbsp;Envoyer un email</a>
+      <a href="https://linkedin.com/in/oxanadelaunay" target="_blank" class="c-btn-li">💼 &nbsp;Me suivre sur LinkedIn</a>
+      <a href="CV_Oxana_Delaunay.pdf" download class="c-btn-cv">⬇️ &nbsp;Télécharger mon CV (PDF)</a>
+    </div>
+  </div>
+</section>
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+<footer>
+  <p class="foot-copy">© 2026 Oxana Delaunay · Conçu avec ❤️ et ☕</p>
+  <div class="foot-socials">
+    <a href="https://linkedin.com/in/oxanadelaunay" target="_blank" class="foot-soc">in</a>
+    <a href="mailto:oxanadelaunaypro@gmail.com" class="foot-soc">@</a>
+  </div>
+</footer>
 
-        // Fade-in animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+  function toggleMenu() { document.getElementById('navMob').classList.toggle('open'); }
+  document.addEventListener('click', e => {
+    const m = document.getElementById('navMob');
+    if (m.classList.contains('open') && !m.contains(e.target) && !e.target.closest('.burger')) m.classList.remove('open');
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
